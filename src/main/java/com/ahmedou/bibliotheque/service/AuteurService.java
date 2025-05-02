@@ -1,6 +1,7 @@
 package com.ahmedou.bibliotheque.service;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.ahmedou.bibliotheque.dto.AuteurDetailDTO;
@@ -87,7 +88,7 @@ public class AuteurService {
             return null;
         List<Auteur> auteurs = auteur.getAuteursSimillers(auteurRepository.findAll());
 
-        List<AuteurSimpleDTO> auteursSimlaires = List.of();
+        List<AuteurSimpleDTO> auteursSimlaires = new ArrayList<>();
         for (Auteur a : auteurs) {
             auteursSimlaires.add(new AuteurSimpleDTO(a));
         }

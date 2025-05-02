@@ -42,11 +42,12 @@ public class GlobalExceptionHandler {
         return ResponseEntity.badRequest().body(body);
     }
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<Map<String, Object>> handleGeneralException(Exception ex) {
+    public ResponseEntity<Map<String, Object>> handleException(Exception e) {
         Map<String, Object> body = new HashMap<>();
-        body.put("message", "Une erreur s'est produite"+" : " + ex.getMessage());
+        body.put("message", "Une erreur s'est produite : " + e.getClass().getSimpleName() + " - " + e.getMessage());
         body.put("status", 500);
         body.put("timestamp", LocalDateTime.now());
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(body);
+        return ResponseEntity.status(500).body(body);
     }
+
 }

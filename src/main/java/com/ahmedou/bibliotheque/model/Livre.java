@@ -46,7 +46,12 @@ public class Livre {
     @OneToMany(mappedBy = "livre", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private List<Achat> achats;
-    
+    public String getGenre(){
+        if (this.genre == null) {
+            this.genre = "Non spécifié";
+        }
+        return this.genre;
+    }
     public Livre(String titre, String description, double prix, String isbn,LocalDate datePublication ,Auteur auteur) {
         this.titre = titre;
         this.description = description;
