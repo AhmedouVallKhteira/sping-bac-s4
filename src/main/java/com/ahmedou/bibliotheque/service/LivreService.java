@@ -1,6 +1,7 @@
 package com.ahmedou.bibliotheque.service;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.ahmedou.bibliotheque.dto.LivreDetailDTO;
@@ -88,7 +89,7 @@ public class LivreService {
             return null;
         List<Livre> livres = livre.getLivresSimillers(livreRepository.findAll());
 
-        List<LivreSimpleDTO> livresSimlaires = List.of();
+        List<LivreSimpleDTO> livresSimlaires = new ArrayList<>();
         for(Livre l : livres){
             livresSimlaires.add(new LivreSimpleDTO(l));
         }

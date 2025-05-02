@@ -67,14 +67,13 @@ public class Livre {
     @JsonIgnore
     private Auteur auteur;
 
-
     @OneToMany(mappedBy = "livre", cascade = CascadeType.ALL)
     private List<EvaluationLivre> evaluations;
 
     public String getImageUrl() {
         return FileStorageService.getFileUrl("livres", id.toString());
     }
-
+    
     public float getEvaluation() {
         if (evaluations == null || evaluations.isEmpty()) {
             return 0.0f;
